@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eniva Tech Solutions - SaaS & Cybersecurity Innovators</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Animate.css for animations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <!-- AOS Scroll Animation -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    /* Custom styles */
+    .gradient-bg {
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.9) 0%, rgba(124, 58, 237, 0.9) 100%);
+    }
+    .hero-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://source.unsplash.com/random/1920x1080/?technology,cybersecurity') no-repeat center center;
+      background-size: cover;
+    }
+    .team-member:hover .social-links {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .chat-bubble {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background: #4f46e5;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+    .chat-bubble:hover {
+      transform: scale(1.05);
+    }
+    .chat-window {
+      position: fixed;
+      bottom: 90px;
+      right: 20px;
+      width: 350px;
+      height: 450px;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .chat-header {
+      background: #4f46e5;
+      color: white;
+      padding: 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chat-messages {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+    }
+    .chat-input {
+      padding: 15px;
+      border-top: 1px solid #e5e7eb;
+      display: flex;
+    }
+    .counter {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #4f46e5;
+    }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  
+  <!-- Navbar -->
+  <header class="fixed top-0 w-full bg-white shadow-md z-50">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <div class="flex items-center">
+        <a href="/">
+            <img src="e.png" alt="Eniva Tech Logo" class="h-10 w-auto mr-3 rounded-lg shadow" />
+        </a>
+        
+        <h1 class="text-2xl font-bold text-indigo-600">Eniva Tech</h1>
+        
+        <!-- Desktop Navigation (hidden on mobile) -->
+        <div class="hidden md:flex ml-10 space-x-6">
+          <a href="#about" class="hover:text-indigo-500">About</a>
+          <a href="#services" class="hover:text-indigo-500">Services</a>
+          <a href="#products" class="hover:text-indigo-500">Products</a>
+          <a href="#projects" class="hover:text-indigo-500">Case Studies</a>
+         <a href="#contact" class="hover:text-indigo-500 hidden md:inline">Contact</a>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        
+        <a href="#demo" class="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-500">Request Demo</a>
+        <!-- 3-bar menu button -->
+        <button class="md:hidden text-indigo-600" id="mobile-menu-button">
+          <i class="fas fa-bars text-xl"></i>
+        </button>
+      </div>
+    </nav>
+    <!-- Mobile Menu (hidden by default) -->
+    <div class="hidden bg-white border-t" id="mobile-menu">
+      <div class="container mx-auto px-6 py-4 flex flex-col space-y-3">
+        <a href="#about" class="hover:text-indigo-500 py-2">About</a>
+        <a href="#services" class="hover:text-indigo-500 py-2">Services</a>
+        <a href="#products" class="hover:text-indigo-500 py-2">Products</a>
+        <a href="#projects" class="hover:text-indigo-500 py-2">Case Studies</a>
+       
+        <a href="#contact" class="hover:text-indigo-500 py-2">Contact</a>
+      </div>
+    </div>
+  </header>
+
+<!-- Hero with background image -->
+<section class="h-screen flex items-center justify-center hero-section text-white text-center px-4 pt-16" style="background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://plus.unsplash.com/premium_photo-1661817214148-2d4cf768a7c3?q=80&w=1296&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); background-size: cover; background-position: center;">
+    <div>
+        <h2 class="text-4xl md:text-6xl font-bold animate__animated animate__fadeInDown">Innovating SaaS & Cybersecurity Solutions</h2>
+        <p class="mt-4 text-lg md:text-xl animate__animated animate__fadeInUp">Empowering businesses with cloud-first solutions and enterprise-grade security.</p>
+        <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4 animate__animated animate__fadeInUp">
+            <a href="#services" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold shadow hover:bg-gray-100">Explore Services</a>
+            <a href="#contact" class="bg-transparent border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-indigo-600 transition">Contact Us</a>
+        </div>
+    </div>
+  </section>
+
+  <!-- Client Logos -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h3 class="text-center text-gray-500 text-sm uppercase font-semibold mb-8">Trusted by industry leaders</h3>
+    <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-60">
+      <div class="w-32 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="Client 1 Logo" class="h-10 w-auto" />
+      </div>
+      <div class="w-32 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+        <img src="alem.jpg" alt="Client 2 Logo" class="h-10 w-auto" />
+      </div>
+      <div class="w-32 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/4/47/PNG_transparency_demonstration_1.png" alt="Client 3 Logo" class="h-10 w-auto" />
+      </div>
+      <div class="w-32 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/JavaScript-logo.png" alt="Client 4 Logo" class="h-10 w-auto" />
+      </div>
+      <div class="w-32 h-16 bg-gray-200 rounded-lg flex items-center justify-center">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Google-flutter-logo.png" alt="Client 5 Logo" class="h-10 w-auto" />
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <!-- About with Counter -->
+  <section id="about" class="py-20 container mx-auto px-6" data-aos="fade-up">
+    <h2 class="text-3xl font-bold text-center text-indigo-600 mb-12">About Eniva Tech</h2>
+    <div class="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="text-lg text-gray-700 mb-4">Founded in 2020, Eniva Tech emerged from a simple vision: to make enterprise-grade technology accessible to businesses of all sizes.</p>
+        <p class="text-lg text-gray-700 mb-6">Today, we specialize in delivering SaaS platforms that drive efficiency, scalability, and security. With plans to expand into cyber security, we aim to become a trusted technology partner for enterprises worldwide.</p>
+        <div class="grid grid-cols-2 gap-6">
+          <div>
+            <h4 class="font-semibold text-indigo-600 mb-2">Our Mission</h4>
+            <p class="text-gray-600">To empower businesses through innovative, secure, and scalable technology solutions.</p>
+          </div>
+          <div>
+            <h4 class="font-semibold text-indigo-600 mb-2">Our Vision</h4>
+            <p class="text-gray-600">A world where every business can leverage cutting-edge technology to achieve its full potential.</p>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="bg-indigo-100 p-6 rounded-2xl text-center">
+          <div class="counter text-indigo-600 mb-2" data-target="50">0</div>
+          <div class="text-gray-700">Clients Served</div>
+        </div>
+        <div class="bg-purple-100 p-6 rounded-2xl text-center">
+          <div class="counter text-purple-600 mb-2" data-target="15">0</div>
+          <div class="text-gray-700">Projects Completed</div>
+        </div>
+        <div class="bg-blue-100 p-6 rounded-2xl text-center">
+          <div class="counter text-blue-600 mb-2" data-target="12">0</div>
+          <div class="text-gray-700">Team Members</div>
+        </div>
+        <div class="bg-green-100 p-6 rounded-2xl text-center">
+          <div class="counter text-green-600 mb-2" data-target="98">0</div>
+          <div class="text-gray-700">Client Satisfaction</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-indigo-600 mb-4">Our Leadership</h2>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Meet the passionate experts driving innovation at Eniva Tech</p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md transition hover:shadow-lg" data-aos="fade-up">
+          <div class="h-48 bg-gray-200 relative">
+            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+              <div class="flex space-x-2 social-links opacity-0 transition-all transform translate-y-4">
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg">Samuel Kumela</h3>
+            <p class="text-indigo-600 mb-3">CEO & Founder</p>
+            <p class="text-gray-600">Former tech executive with 15+ years in software development and enterprise solutions.</p>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md transition hover:shadow-lg" data-aos="fade-up" data-aos-delay="100">
+          <div class="h-48 bg-gray-200 relative">
+            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+              <div class="flex space-x-2 social-links opacity-0 transition-all transform translate-y-4">
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg">Adonight Alem</h3>
+            <p class="text-indigo-600 mb-3">CTO</p>
+            <p class="text-gray-600">Cybersecurity expert and cloud architect with expertise in scalable infrastructure.</p>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-2xl overflow-hidden shadow-md transition hover:shadow-lg" data-aos="fade-up" data-aos-delay="200">
+          <div class="h-48 bg-gray-200 relative">
+            <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/70 to-transparent">
+              <div class="flex space-x-2 social-links opacity-0 transition-all transform translate-y-4">
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fab fa-twitter"></i></a>
+                <a href="#" class="text-white hover:text-indigo-300"><i class="fas fa-envelope"></i></a>
+              </div>
+            </div>
+          </div>
+          <div class="p-6">
+            <h3 class="font-semibold text-lg">Amanuel Gez</h3>
+            <p class="text-indigo-600 mb-3">Head of Product</p>
+            <p class="text-gray-600">Product management leader with a track record of successful SaaS launches.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center mt-12">
+        <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-500">
+          View Open Positions
+          <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="py-20 container mx-auto px-6" data-aos="fade-up">
+    <h2 class="text-3xl font-bold text-center text-indigo-600 mb-4">Our Services</h2>
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Comprehensive technology solutions designed to drive your business forward</p>
+    
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-indigo-100 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-4">
+          <i class="fas fa-cloud"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-4">SaaS Development</h3>
+        <p class="text-gray-600">Custom SaaS platforms tailored for your business needs, scalable and secure in the cloud. End-to-end development from concept to deployment.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center text-purple-600 text-2xl mb-4">
+          <i class="fas fa-globe"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-4">Web Solutions</h3>
+        <p class="text-gray-600">High-performing websites and portals designed for smooth user experience & growth. Responsive designs that work across all devices.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center text-blue-600 text-2xl mb-4">
+          <i class="fas fa-shield-alt"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-4">Cybersecurity Solutions</h3>
+        <p class="text-gray-600">Future-ready cyber defense solutions to protect your digital assets and data. Comprehensive security assessments and implementations.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center text-green-600 text-2xl mb-4">
+          <i class="fas fa-server"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-4">IT Infrastructure</h3>
+        <p class="text-gray-600">Robust and scalable infrastructure solutions to support your business operations and growth objectives.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-yellow-100 rounded-xl flex items-center justify-center text-yellow-600 text-2xl mb-4">
+          <i class="fas fa-robot"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-4">AI & Machine Learning</h3>
+        <p class="text-gray-600">Intelligent solutions that leverage artificial intelligence and machine learning to drive insights and automation.</p>
+      </div>
+      
+      <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl transition transform hover:-translate-y-2">
+        <div class="w-14 h-14 bg-red-100 rounded-xl flex items-center justify-center text-red-600 text-2xl mb-4">
+          <i class="fas fa-headset"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-4">Support & Maintenance</h3>
+        <p class="text-gray-600">Ongoing support and maintenance services to ensure your systems remain secure, updated, and performing optimally.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Products -->
+  <section id="products" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-indigo-600 mb-4">Our Products</h2>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Ready-to-use solutions designed to address common business challenges</p>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-center mb-16" data-aos="fade-right">
+        <div>
+          <h3 class="text-2xl font-semibold text-indigo-600 mb-4">SecureFlow</h3>
+          <p class="text-gray-600 mb-6">An end-to-end encrypted workflow automation platform designed for enterprises handling sensitive data.</p>
+          <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-500">
+            Learn more about SecureFlow
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        <div class="bg-white rounded-2xl overflow-hidden shadow-lg">
+          <img src="https://source.unsplash.com/600x400/?dashboard,technology" alt="SecureFlow Dashboard" class="w-full h-auto">
+        </div>
+      </div>
+      
+      <div class="grid md:grid-cols-2 gap-12 items-center" data-aos="fade-left">
+        <div class="order-2 md:order-1">
+          <h3 class="text-2xl font-semibold text-indigo-600 mb-4">DataInsight AI</h3>
+          <p class="text-gray-600 mb-6">An AI-powered analytics platform that transforms raw data into actionable business intelligence.</p>
+          <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-500">
+            Explore DataInsight AI
+            <i class="fas fa-arrow-right ml-2"></i>
+          </a>
+        </div>
+        <div class="order-1 md:order-2 bg-white rounded-2xl overflow-hidden shadow-lg">
+          <img src="https://source.unsplash.com/600x400/?analytics,dashboard" alt="DataInsight AI Dashboard" class="w-full h-auto">
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center">
+        <a href="#" class="bg-indigo-600 text-white px-8 py-3 rounded-lg shadow hover:bg-indigo-500 inline-flex items-center">
+          <i class="fas fa-file-alt mr-2"></i>
+          View All Products & Pricing
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects / Case Studies -->
+  <section id="projects" class="py-20 container mx-auto px-6">
+    <h2 class="text-3xl font-bold text-center text-indigo-600 mb-4">Case Studies</h2>
+    <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Real-world examples of how our solutions have helped businesses succeed</p>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="bg-white rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up">
+        <img src="https://source.unsplash.com/600x300/?technology,business" alt="Case Study" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <span class="text-sm text-indigo-600 font-semibold">Healthcare Sector</span>
+          <h3 class="text-xl font-semibold my-3">Streamlining Patient Data Management</h3>
+          <p class="text-gray-600 mb-4">How we helped a healthcare provider secure patient data while improving accessibility for medical staff.</p>
+          <a href="#" class="text-indigo-600 hover:text-indigo-500 text-sm font-semibold">Read Case Study →</a>
+        </div>
+      </div>
+      
+      <div class="bg-white rounded-2xl overflow-hidden shadow-lg" data-aos="fade-up" data-aos-delay="100">
+        <img src="https://source.unsplash.com/600x300/?finance,technology" alt="Case Study" class="w-full h-48 object-cover">
+        <div class="p-6">
+          <span class="text-sm text-indigo-600 font-semibold">Financial Services</span>
+          <h3 class="text-xl font-semibold my-3">Automating Financial Compliance</h3>
+          <p class="text-gray-600 mb-4">How our solution helped a fintech company automate regulatory compliance processes, reducing manual work by 70%.</p>
+          <a href="#" class="text-indigo-600 hover:text-indigo-500 text-sm font-semibold">Read Case Study →</a>
+        </div>
+      </div>
+    </div>
+    
+    <div class="text-center mt-12">
+      <a href="#" class="inline-flex items-center text-indigo-600 font-semibold hover:text-indigo-500">
+        View All Case Studies
+        <i class="fas fa-arrow-right ml-2"></i>
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="py-20 gradient-bg text-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-4">What Our Clients Say</h2>
+      <p class="text-center text-indigo-100 max-w-2xl mx-auto mb-12">Don't just take our word for it - hear from our satisfied clients</p>
+      
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl" data-aos="fade-up">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="italic mb-6">"Eniva Tech transformed our patient management system. The platform is intuitive, secure, and has significantly improved our efficiency."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-white/20 rounded-full mr-4"></div>
+            <div>
+              <div class="font-semibold">Dr. James Wilson</div>
+              <div class="text-indigo-200 text-sm">CTO, MedHealth Group</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="100">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="italic mb-6">"The cybersecurity implementation by Eniva Tech has given us peace of mind. Their team is knowledgeable, professional, and delivered on time."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-white/20 rounded-full mr-4"></div>
+            <div>
+              <div class="font-semibold">Sarah Jenkins</div>
+              <div class="text-indigo-200 text-sm">Security Director, WealthFront Financial</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white/10 backdrop-blur-sm p-6 rounded-2xl" data-aos="fade-up" data-aos-delay="200">
+          <div class="flex items-center mb-4">
+            <div class="text-yellow-400 flex">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+            </div>
+          </div>
+          <p class="italic mb-6">"We've seen a 40% increase in operational efficiency since implementing Eniva's workflow automation platform. Their support has been exceptional."</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-white/20 rounded-full mr-4"></div>
+            <div>
+              <div class="font-semibold">Michael Torres</div>
+              <div class="text-indigo-200 text-sm">COO, Global Retail Inc</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-20 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center text-indigo-600 mb-4">Get In Touch</h2>
+      <p class="text-center text-gray-600 max-w-2xl mx-auto mb-12">Have questions or ready to start your project? Reach out to us today.</p>
+      
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <form class="bg-white p-8 rounded-2xl shadow space-y-6">
+            <div>
+              <label for="name" class="block text-gray-700 mb-2">Your Name</label>
+              <input type="text" id="name" placeholder="Enter Your Name" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300"/>
+            </div>
+            <div>
+              <label for="email" class="block text-gray-700 mb-2">Your Email</label>
+              <input type="email" id="email" placeholder="Name@company.com" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300"/>
+            </div>
+            <div>
+              <label for="company" class="block text-gray-700 mb-2">phone number</label>
+              <input type="number" id="phonenum" placeholder="+251" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300"/>
+            </div>
+            <div>
+              <label for="message" class="block text-gray-700 mb-2">Your Message</label>
+              <textarea id="message" placeholder="How can we help you?" rows="4" class="w-full border p-3 rounded-lg focus:ring-2 focus:ring-indigo-300 focus:border-indigo-300"></textarea>
+            </div>
+            <button class="w-full bg-indigo-600 text-white py-3 rounded-lg hover:bg-indigo-500 font-semibold">Send Message</button>
+          </form>
+        </div>
+        
+        <div>
+          <div class="bg-white p-8 rounded-2xl shadow h-full">
+            <h3 class="text-xl font-semibold text-indigo-600 mb-6">Contact Information</h3>
+            
+            <div class="space-y-6">
+              <div class="flex items-start">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mr-4">
+                  <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Address</h4>
+                  <p class="text-gray-600">123 Tech Boulevard<br>San Francisco, CA 94103</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mr-4">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Phone</h4>
+                  <p class="text-gray-600">+1 (555) 123-4567</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 mr-4">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div>
+                  <h4 class="font-semibold">Email</h4>
+                  <p class="text-gray-600">info@enivatech.com</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-8">
+              <h4 class="font-semibold mb-4">Follow Us</h4>
+              <div class="flex space-x-4">
+                <a href="#" class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white">
+                  <i class="fab fa-twitter"></i>
+                </a>
+                <a href="#" class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center text-indigo-600 hover:bg-indigo-600 hover:text-white">
+                  <i class="fab fa-facebook-f"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Request a Demo -->
+  <section id="demo" class="py-20 gradient-bg text-white text-center">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold mb-6">Ready to Transform Your Business?</h2>
+      <p class="max-w-2xl mx-auto mb-8">See how our SaaS solutions can streamline your operations, enhance security, and drive growth.</p>
+      <a href="mailto:info@enivatech.com" class="bg-white text-indigo-600 px-8 py-3 rounded-lg shadow hover:bg-gray-100 font-semibold inline-flex items-center">
+        <i class="fas fa-calendar-check mr-2"></i>
+        Book a Demo
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-indigo-900 text-white py-12">
+    <div class="container mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-8">
+        <div>
+          <h3 class="text-xl font-semibold mb-4">Eniva Tech</h3>
+          <p class="text-indigo-200 mb-4">Innovating SaaS and cybersecurity solutions for businesses worldwide.</p>
+          <div class="flex space-x-4">
+            <a href="#" class="text-indigo-200 hover:text-white">
+              <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="#" class="text-indigo-200 hover:text-white">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="#" class="text-indigo-200 hover:text-white">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Solutions</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-indigo-200 hover:text-white">SaaS Development</a></li>
+            <li><a href="#" class="text-indigo-200 hover:text-white">Web Solutions</a></li>
+            <li><a href="#" class="text-indigo-200 hover:text-white">Cybersecurity</a></li>
+            <li><a href="#" class="text-indigo-200 hover:text-white">IT Infrastructure</a></li>
+            <li><a href="#" class="text-indigo-200 hover:text-white">AI & Machine Learning</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Company</h3>
+          <ul class="space-y-2">
+            <li><a href="#" class="text-indigo-200 hover:text-white">About Us</a></li>
+            <li><a href="#" class="text-indigo-200 hover:text-white">Careers</a></li>
+            <li><a href="#" class="text-indigo-200 hover:text-white">Case Studies</a></li>
+            <li><a href="#" class="text-indigo-200 hover:text-white">Blog</a></li>
+            <li><a href="#" class="text-indigo-200 hover:text-white">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div>
+          <h3 class="text-lg font-semibold mb-4">Contact</h3>
+          <ul class="space-y-2 text-indigo-200">
+            <li class="flex items-start">
+              <i class="fas fa-map-marker-alt mt-1 mr-3 text-sm"></i>
+              <span>123 Tech Boulevard, San Francisco, CA 94103</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-phone mt-1 mr-3 text-sm"></i>
+              <span>+1 (555) 123-4567</span>
+            </li>
+            <li class="flex items-start">
+              <i class="fas fa-envelope mt-1 mr-3 text-sm"></i>
+              <span>info@enivatech.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="border-t border-indigo-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p>&copy; 2025 Eniva Tech Solutions. All Rights Reserved.</p>
+        <div class="flex space-x-6 mt-4 md:mt-0">
+          <a href="#" class="text-indigo-200 hover:text-white">Privacy Policy</a>
+          <a href="#" class="text-indigo-200 hover:text-white">Terms of Service</a>
+          <a href="#" class="text-indigo-200 hover:text-white">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Live Chat Bubble -->
+  <div class="chat-bubble">
+    <i class="fas fa-comment"></i>
+  </div>
+
+  <!-- Chat Window -->
+  <div class="chat-window">
+    <div class="chat-header">
+      <div>
+        <div class="font-semibold">Eniva Support</div>
+        <div class="text-xs">We're here to help!</div>
+      </div>
+      <button id="close-chat" class="text-white">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="chat-messages">
+      <div class="flex mb-4">
+        <div class="w-8 h-8 bg-indigo-600 rounded-full flex items-center justify-center text-white text-xs mr-2">ES</div>
+        <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+          <p class="text-sm">Hello! How can we help you today?</p>
+        </div>
+      </div>
+    </div>
+    <div class="chat-input">
+      <input type="text" placeholder="Type your message..." class="flex-1 border p-2 rounded-lg focus:outline-none focus:ring-1 focus:ring-indigo-300"/>
+      <button class="bg-indigo-600 text-white px-4 py-2 rounded-lg ml-2">
+        <i class="fas fa-paper-plane"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- AOS Script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 1000,
+      once: true,
+    });
+    
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('hidden');
+    });
+    
+    // Chat bubble functionality
+    const chatBubble = document.querySelector('.chat-bubble');
+    const chatWindow = document.querySelector('.chat-window');
+    const closeChat = document.getElementById('close-chat');
+    
+    chatBubble.addEventListener('click', function() {
+      chatWindow.style.display = 'flex';
+    });
+    
+    closeChat.addEventListener('click', function() {
+      chatWindow.style.display = 'none';
+    });
+    
+ 
+  const counters = document.querySelectorAll('.counter');
+  
+  const options = {
+    root: null, // viewport
+    threshold: 0.5 // trigger when 50% of the element is visible
+  };
+
+  const startCounting = (entry) => {
+    if (entry.isIntersecting) {
+      const counter = entry.target;
+      const updateCount = () => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText;
+        const increment = target / 200; // speed
+
+        if (count < target) {
+          counter.innerText = Math.ceil(count + increment);
+          setTimeout(updateCount, 10);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+      observer.unobserve(counter); // stop observing after counting
+    }
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => startCounting(entry));
+  }, options);
+
+  counters.forEach(counter => observer.observe(counter));
+
+
+  </script>
+</body>
+</html>
